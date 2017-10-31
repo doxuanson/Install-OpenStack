@@ -10,7 +10,8 @@
 
 <a name="1"></a>
 # 1.Mô hình
-Mô hình cài đặt OpenStack Pike gồm 1 node Controller, 2 node Compute, 2 node Block. Scripts có thể mở rộng cài 1 node Controller, N node Compute và N node Block.  
+\- Mô hình cài đặt OpenStack Pike gồm 1 node Controller, 2 node Compute, 2 node Block. Scripts có thể mở rộng cài 1 node Controller, N node Compute và N node Block.  
+\- Cài đặt các project: Keystone, Glance, Nova, Neutron, Horizon, Cinder, Heat.  
 
 <img src="images/mo_hinh.png" />
 
