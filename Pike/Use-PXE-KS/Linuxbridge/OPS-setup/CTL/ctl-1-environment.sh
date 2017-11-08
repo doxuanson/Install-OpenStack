@@ -1,19 +1,21 @@
 #!/bin/bash
 #Author Son Do Xuan
 
-source function.sh
-source config.sh
-
-# Install crudini
-echocolor "Install crudini"
-sleep 3
-apt-get install -y crudini
+source ../function.sh
+source ../config.sh
 
 # Function update and upgrade for CONTROLLER
 update_upgrade () {
 	echocolor "Update and Update controller"
 	sleep 3
 	apt-get update -y&& apt-get upgrade -y
+}
+
+# Function install crudini
+install_crudini () {
+	echocolor "Install crudini"
+	sleep 3
+	apt-get install -y crudini
 }
 
 # Function install and config NTP
@@ -93,13 +95,16 @@ install_memcached () {
 ###Execute functions###
 #######################
 
-# Update and upgrade for controller
+# Update and upgrade for CONTROLLER
 update_upgrade
+
+# Install crudini
+install_crudini
 
 # Install and config NTP
 install_ntp
 
-# OpenStack packages (python-openstackclient)
+# Install OpenStack packages (python-openstackclient)
 install_ops_packages
 
 # Install SQL database (Mariadb)

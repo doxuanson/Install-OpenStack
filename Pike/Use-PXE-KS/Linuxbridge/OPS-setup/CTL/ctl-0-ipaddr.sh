@@ -1,8 +1,8 @@
 #!/bin/bash
 #Author Son Do Xuan
 
-source function.sh
-source config.sh
+source ../function.sh
+source ../config.sh
 
 # Function config hostname
 config_hostname () {
@@ -13,8 +13,17 @@ config_hostname () {
 127.0.0.1	localhost
 
 $CTL_MGNT_IP	$HOST_CTL
-$COM_MGNT_IP	$HOST_COM	
 EOF
+
+	for (( i=1; i <= ${#HOST_COM[*]}; i++ ))
+	do
+		echo "${COM_MGNT_IP[$i]}	${HOST_COM[$i]}" >> /etc/hosts
+	done
+	
+	for (( i=1; i <= ${#HOST_BLK[*]}; i++ ))
+	do
+		echo "${BLK_MGNT_IP[$i]}	${HOST_BLK[$i]}" >> /etc/hosts
+	done
 }
 
 # Function IP address

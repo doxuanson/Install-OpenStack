@@ -1,8 +1,8 @@
 #!/bin/bash
 # Author Son Do Xuan
 
-source function.sh
-source config.sh
+source ../function.sh
+source ../config.sh
 
 # Function create database for Keystone
 keystone_create_db () {
@@ -22,7 +22,7 @@ EOF
 keystone_install () {
 	echocolor "Install and configure components of Keystone"
 	sleep 3
-	apt install keystone  apache2 libapache2-mod-wsgi -y
+	apt install keystone apache2 libapache2-mod-wsgi -y
 }
 
 # Function configure components of Keystone

@@ -3,7 +3,7 @@
 
 # Ham dinh nghia mau cho cac thong bao in ra man hinh
 function echocolor {
-    echo "$(tput setaf 2)##### $1 #####$(tput sgr0)"
+    echo -e "\e[32m##### $1 #####\e[0m"
 }
 
 # Ham sua file config cua OpenStack

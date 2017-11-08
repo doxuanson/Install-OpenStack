@@ -1,8 +1,9 @@
 #!/bin/bash
 #Author Son Do Xuan
 
-source function.sh
-source config.sh
+source ../function.sh
+source ../config.sh
+source com_num.sh
 
 if [ $network_model = "provider" -o $network_model = "selfservice" ]
 then
@@ -12,40 +13,27 @@ else
 	exit 1;
 fi
 
-source function.sh
-source config.sh
+source ../function.sh
+source ../config.sh
 
 echocolor "IP address"
-source ctl-0-ipaddr.sh
+source com-0-ipaddr.sh
 
 echocolor "Environment"
-source ctl-1-environment.sh
-
-echocolor "Keystone"
-source ctl-2-keystone.sh
-
-echocolor "Glance"
-source ctl-3-glance.sh
+source com-1-environment.sh
 
 echocolor "Nova"
-source ctl-4-nova.sh
+source com-2-nova.sh
 
 if [ $network_model = "provider" ]
 then
 	echocolor "Neutron"
-	source ctl-5-neutron-provider.sh
-
-	echocolor "Horizon"
-	source ctl-6-horizon.sh provider
+	source com-3-neutron-provider.sh
 elif [ $network_model = "selfservice" ]
 then
 	echocolor "Neutron"
-	source ctl-5-neutron-selfservice.sh
-
-	echocolor "Horizon"
-	source ctl-6-horizon.sh selfservice
+	source com-3-neutron-selfservice.sh
 fi
 
-echocolor "Create Network and Flavor"
-source ctl-7-create_network.sh
-
+echocolor "Update"
+source com-update.sh

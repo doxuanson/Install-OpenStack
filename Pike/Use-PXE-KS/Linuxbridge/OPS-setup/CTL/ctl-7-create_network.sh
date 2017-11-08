@@ -1,8 +1,8 @@
 #!/bin/bash
 #Author Son Do Xuan
 
-source function.sh
-source config.sh
+source ../function.sh
+source ../config.sh
 
 echocolor "Create provider network, subnet and flavor"
 openstack network create provider --project service --share \

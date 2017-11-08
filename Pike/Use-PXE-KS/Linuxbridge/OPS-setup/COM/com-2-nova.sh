@@ -1,9 +1,9 @@
 #!/bin/bash
-
 #Author Son Do Xuan
 
-source function.sh
-source config.sh
+source ../function.sh
+source ../config.sh
+source com_num.sh
 
 # Function install nova-compute
 nova_install () {
@@ -47,7 +47,7 @@ nova_config () {
 		password Welcome123
 
 	ops_add $novafile DEFAULT \
-		my_ip $COM_MGNT_IP
+		my_ip ${COM_MGNT_IP[$COM_NUM]}
 
 	ops_add $novafile DEFAULT \
 		use_neutron True
