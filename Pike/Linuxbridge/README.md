@@ -28,7 +28,7 @@ Yêu cầu phần cứng và địa chỉ IP cho các nodes.
 \- **Trên tất cả các node**   
   - Download file shell script. Thực hiện các câu lệnh sau:  
   ```
-  wget https://raw.githubusercontent.com/doxuanson/Install-OpenStack/master/Pike/OPS-setup/ip_setup.sh
+  wget https://raw.githubusercontent.com/doxuanson/Install-OpenStack/master/Pike/Linuxbridge/OPS-setup/ip_setup.sh
   ```
 
  - Thực hiện script setup địa chỉ IP cho **Provider Network** theo mô hình theo cú pháp:  
@@ -47,7 +47,7 @@ Yêu cầu phần cứng và địa chỉ IP cho các nodes.
   - Download các file shell scripts. Thực hiện các câu lệnh sau:  
   ```
   apt-get install subversion -y
-  svn export https://github.com/doxuanson/Install-OpenStack/tree/master/Pike/OPS-setup
+  svn export https://github.com/doxuanson/Install-OpenStack/trunk/Pike/Linuxbridge/OPS-setup
   ```
   - Set quyền cho các files.  
   ```

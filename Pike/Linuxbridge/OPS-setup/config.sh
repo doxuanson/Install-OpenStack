@@ -68,7 +68,8 @@ HOST_BLK[2]=block2
 
 
 # Password for node
-NODE_DEFAULT_PASS="1"
+#Node: Must use same password for all node.
+NODE_DEFAULT_PASS="son123456"
 
 CTL_PASS=$NODE_DEFAULT_PASS
 COM_PASS[1]=$NODE_DEFAULT_PASS
