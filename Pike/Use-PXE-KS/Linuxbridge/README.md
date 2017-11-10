@@ -264,6 +264,11 @@ sudo mkdir /var/www/html/centos7
 # mount -o loop ubuntu-16.04.3-server-amd64.iso /var/www/html/ubuntu-16.04
 ```
 
+và viết thêm vào cuối file `/etc/fstab` :  
+```
+/root/images/ubuntu-16.04.3-server-amd64.iso /var/www/html/ubuntu-16.04 auto defaults 0 0
+```
+
 \- Ở trên đã mount `CentOS-7-x86_64-Minimal-1708.iso` vào thư mục `/mnt` . Giờ ta copy:  
 ```
 # cp -r /mnt/* /var/www/html/centos7/
@@ -380,7 +385,7 @@ svn export https://github.com/doxuanson/Install-OpenStack/trunk/Pike/Use-PXE-KS/
 ## 4.1.Tạo file kickstart cho các node OpenStack
 \- Dùng các file trong thư mục `/var/www/html/kickstart_OPS` để sinh các file kickstart cho các node OpenStack.  
 ```
-cd `/var/www/html/kickstart_OPS`
+cd /var/www/html/kickstart_OPS
 ```
 
   - Sinh file kickstart cho node Controller:  
@@ -388,7 +393,7 @@ cd `/var/www/html/kickstart_OPS`
   source CTL_ks_create.sh
   ```
 
-  - Sinh file kickstart cho node Compute`, đầu tiên cho thiết lập biến `com_num` bằng `1` (`com_num=1`) trong file config.sh, sau đó:
+  - Sinh file kickstart cho node Compute1, đầu tiên cho thiết lập biến `com_num` bằng `1` (`com_num=1`) trong file config.sh, sau đó:
   ```
   source COM_ks_create.sh
   ```
@@ -398,7 +403,7 @@ cd `/var/www/html/kickstart_OPS`
   source COM_ks_create.sh
   ```
 
-  - Sinh file kickstart cho node Block1, đầu tiên cho thiết lập biến `blk_num` bằng `1` (`com_num=1`) trong file config.sh, sau đó:
+  - Sinh file kickstart cho node Block1, đầu tiên cho thiết lập biến `blk_num` bằng `1` (`blk_num=1`) trong file config.sh, sau đó:
   ```
   source BLK_ks_create.sh
   ```
