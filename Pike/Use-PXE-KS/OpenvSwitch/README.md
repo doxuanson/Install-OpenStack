@@ -379,6 +379,9 @@ svn export https://github.com/doxuanson/Install-OpenStack/trunk/Pike/Use-PXE-KS/
 <a name="4"></a>
 # 4.Hướng dẫn sử dụng
 \- Thay đổi nội dung các file `/var/www/html/OPS-setup/config.sh` và `/var/www/html/kickstart_OPS/config.sh` theo mô hình của bạn.  
+
+>Chú ý: Mật khẩu cho node phải đồng nhất trong 2 file cấu hình.
+
 \- Trong bài lab này, mình cài đặt mô hình OpenStack gồm 1 node Controller, 2 node Compute và 2 node Block nhưng bạn cũng có thể mở rộng mô hình gồm 1 node Controller, n node Compute và n node Block bằng cách thêm các biến thêm vào file `/var/www/html/OPS-setup/config.sh`.  
 
 <a name="4.1"></a>

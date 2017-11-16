@@ -5,13 +5,20 @@
 #### Set local variable  for scripts #####
 ##########################################
 
-# Var
+# Variable
+## IP address of COBBLER, APT_CACHE_SERVER and path for repo Ubuntu
 COBBLER_IP=172.16.69.101
 APT_CACHE_SERVER=172.16.69.101
+REPO_PATH=http://172.16.69.101/ubuntu-16.04
+
+## Folder name contain scripts to install OpenStack
 PATH_OPSsetup="OPS-setup"
-ROOT_PASS=son123456
+
+## User name, user password and root password
 USER_NAME=ubuntu
 USER_PASS=son123456
-REPO_PATH=http://172.16.69.101/ubuntu-16.04
+ROOT_PASS=son123456
+
+## Compute number and Block number
 com_num=1
 blk_num=1
