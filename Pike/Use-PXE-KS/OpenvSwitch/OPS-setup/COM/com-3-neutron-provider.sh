@@ -11,6 +11,7 @@ neutron_install () {
 	sleep 3
 
 	apt install neutron-openvswitch-agent -y
+	systemctl restart openvswitch-switch
 }
 
 # Function configure the common component

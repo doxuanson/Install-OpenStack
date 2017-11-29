@@ -45,6 +45,7 @@ neutron_install () {
 	apt install neutron-server neutron-plugin-ml2 \
 	  neutron-openvswitch-agent neutron-dhcp-agent \
 	  neutron-metadata-agent -y
+	systemctl restart openvswitch-switch
 }
 
 # Function configure the server component
