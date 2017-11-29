@@ -1,7 +1,20 @@
 # Cài đặt OpenStack với Linux bridge sử dụng công nghệ PXE và Kickstart
 
 # MỤC LỤC
-
+- [1.Mô hình](#1)
+- [2.IP Planning](#2)
+- [3.Cài đặt trên OPS-setup](#3)
+	- [3.1.Cài đặt và cấu hình DHCP Server](#3.1)
+	- [3.2.Cài đặt và cấu hình TFTP Server](#3.2)
+	- [3.3.Cấu hình prelinux](#3.3)
+	- [3.4.Cấu hình netboot image](#3.4)
+	- [3.5.Cấu hình để PXE client cài Ubuntu Server 16.04 và Centos 7 từ repo local](#3.5)
+	- [3.6.File kickstart cho hệ điều hành Ubuntu 16.04 và Centos 7](#3.6)
+	- [3.7.Cấu hình cài đặt tự động cho OpenStack](#3.7)
+- [4.Hướng dẫn sử dụng](#4)
+	- [4.1.Tạo file kickstart cho các node OpenStack](#4.1)
+	- [4.2.Mở rộng cho n node Compute và n node Block](#4.2)
+- [5.Demo](#5)
 
 <a name="1"></a>
 # 1.Mô hình
@@ -361,7 +374,7 @@ Tạo file `/var/www/html/kscentos.cfg` với nội dung như sau:
 ```
 
 <a name="3.7"></a>
-### 3.7.Cấu hình cài đặt tự động cho OpenStack
+## 3.7.Cấu hình cài đặt tự động cho OpenStack
 \- Download các file shell scripts. Thực hiện các câu lệnh sau:  
 ```
 apt-get install subversion -y
