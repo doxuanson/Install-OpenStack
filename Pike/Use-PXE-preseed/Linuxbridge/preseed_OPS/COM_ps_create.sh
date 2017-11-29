@@ -99,9 +99,9 @@ echo -e "wget --no-parent --recursive -nH --reject=\"index.html*\" http://$OPS_s
 echo -e "cd /root/OPS-setup/COM" >> /target/etc/rc.local; \\
 echo -e "echo \"COM_NUM=$com_num\" > com_num.sh" >> /target/etc/rc.local; \\
 echo -e "source com-all.sh" >> /target/etc/rc.local; \\
-echo -e "#rm /etc/apt/apt.conf.d/00aptproxy" >> /target/etc/rc.local; \\
-echo -e "#rm /etc/rc.local" >> /target/etc/rc.local; \\
-echo -e "#mv /etc/rc.local.bak /etc/rc.local" >> /target/etc/rc.local; \\
+echo -e "rm /etc/apt/apt.conf.d/00aptproxy" >> /target/etc/rc.local; \\
+echo -e "rm /etc/rc.local" >> /target/etc/rc.local; \\
+echo -e "mv /etc/rc.local.bak /etc/rc.local" >> /target/etc/rc.local; \\
 
 echo -e "exit 0" >> /target/etc/rc.local
 
