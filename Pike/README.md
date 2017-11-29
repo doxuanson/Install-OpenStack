@@ -11,3 +11,6 @@
 ## Sử dụng PXE và Kickstart cài OpenStack
 [Su-dung-PXE-va-kickstart-cai-OpenStack](Use-PXE-KS)
 
+## Sử dụng PXE và Preseed cài OpenStack
+[Su-dung-PXE-va-kickstart-cai-OpenStack]Use-PXE-preseed)
+
