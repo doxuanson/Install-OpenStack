@@ -1,4 +1,4 @@
-# Cài đặt OpenStack với Linux bridge sử dụng công nghệ PXE và Preseed
+# Cài đặt OpenStack với Open vSwitch sử dụng công nghệ PXE và Preseed
 
 # MỤC LỤC
 
@@ -375,8 +375,8 @@ Tạo file `/var/www/html/kscentos.cfg` với nội dung như sau:
 \- Download các file shell scripts. Thực hiện các câu lệnh sau:  
 ```
 apt-get install subversion -y
-svn export https://github.com/doxuanson/Install-OpenStack/trunk/Pike/Use-PXE-preseed/Linuxbridge/OPS-setup
-svn export https://github.com/doxuanson/Install-OpenStack/trunk/Pike/Use-PXE-preseed/Linuxbridge/preseed_OPS
+svn export https://github.com/doxuanson/Install-OpenStack/trunk/Pike/Use-PXE-preseed/OpenvSwitch/OPS-setup
+svn export https://github.com/doxuanson/Install-OpenStack/trunk/Pike/Use-PXE-preseed/OpenvSwitch/preseed_OPS
 ```
 
 \- Copy 2 thư mục vừa tải về vào thư mục `/var/www/html` :  

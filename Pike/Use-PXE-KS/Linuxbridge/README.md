@@ -131,7 +131,6 @@ mv pxelinux.0 ../..
 mv pxelinux.cfg/ ../..
 mv boot-screens/ ../..
 cd ../..
-mv ldlinux.c32 ..
 mv boot-screens/ldlinux.c32 .
 chmod 644 boot-screens/*
 rm -rf ubuntu-installer/
@@ -233,8 +232,8 @@ wget http://centos-hn.viettelidc.com.vn/7/isos/x86_64/CentOS-7-x86_64-Minimal-17
 
 \- Copy netboot image đến thư mục `/var/lib/tftpboot` :  
 ```
-# cp -r /mnt/images/preboot/ /var/lib/tftpboot/
-# mv /var/lib/tftpboot/preboot/ /var/lib/tftpboot/centos-install
+# cp -r /mnt/images/pxeboot/ /var/lib/tftpboot/
+# mv /var/lib/tftpboot/pxeboot/ /var/lib/tftpboot/centos-install
 ```
 
 \- Trong thư mục `centos-install`, tạo file `default` với nội dung như sau:  
