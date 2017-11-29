@@ -94,7 +94,7 @@ echo -e "#!/bin/bash" > /target/etc/rc.local; \\
 echo -e "apt update -y && apt upgrade -y" >> /target/etc/rc.local; \\
 
 echo -e "cd /root" >> /target/etc/rc.local; \\
-echo -e "wget --no-parent --recursive -nH --reject=\"index.html*\" http://$COBBLER_IP/$PATH_OPSsetup/" >> /target/etc/rc.local; \\
+echo -e "wget --no-parent --recursive -nH --reject=\"index.html*\" http://$OPS_setup_IP/$PATH_OPSsetup/" >> /target/etc/rc.local; \\
 
 echo -e "cd /root/OPS-setup/COM" >> /target/etc/rc.local; \\
 echo -e "echo \"COM_NUM=$com_num\" > com_num.sh" >> /target/etc/rc.local; \\
