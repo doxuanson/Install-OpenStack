@@ -373,7 +373,7 @@ d-i preseed/late_command string \
 sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/g' /target/etc/ssh/sshd_config; \
 #Config repo
 sed -i 's|172.16.69.101/ubuntu-16.04|vn.archive.ubuntu.com/ubuntu|g' /target/etc/apt/sources.list; \
-apt-get update -y && apt-get upgrade –y; \
+apt-get update -y && apt-get upgrade -y; \
 cd /target/root; \
 mkdir test
 ```
