@@ -125,6 +125,11 @@ heat_config () {
 		auth_uri http://$HOST_CTL:5000/v3
 
 	ops_add $heatapifile DEFAULT \
+		heat_metadata_server_url http://$HOST_CTL:8000
+	ops_add $heatapifile DEFAULT \
+		heat_waitcondition_server_url http://$HOST_CTL:8000/v1/waitcondition
+
+	ops_add $heatapifile DEFAULT \
 		stack_domain_admin heat_domain_admin
 	ops_add $heatapifile DEFAULT \
 		stack_domain_admin_password $HEAT_DOMAIN_ADMIN_PASS

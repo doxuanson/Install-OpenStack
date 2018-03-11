@@ -1,0 +1,1 @@
+# Cài đặt OpenStack thủ công

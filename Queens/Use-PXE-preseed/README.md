@@ -1,0 +1,1 @@
+# Cài đặt OpenStack tự động sử dụng PXE và Preseed
