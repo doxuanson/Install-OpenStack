@@ -31,7 +31,7 @@
 <a name="1"></a>
 
 # 1.Mô hình
-Mô hình cài đặt OpenStack Pike gồm 2 node: Controller và Compute.
+Mô hình cài đặt OpenStack Queens gồm 2 node: Controller và Compute.
 
 <img src="../images/mo_hinh.png" />
 
@@ -263,7 +263,7 @@ MS Name/IP address         Stratum Poll Reach LastRx Last sample
 \- Kích hoạt OpenStack repository  
 ```
 apt install software-properties-common
-add-apt-repository cloud-archive:pike
+add-apt-repository cloud-archive:queens
 ```
 
 \- Update và upgrade:  
@@ -1634,7 +1634,7 @@ service apache2 reload
 <a name="tailieuthamkhao"></a>
 
 # Tài liệu tham khảo
-\- https://docs.openstack.org/pike/install/  
+\- https://docs.openstack.org/queens/install/  
 
 
 
