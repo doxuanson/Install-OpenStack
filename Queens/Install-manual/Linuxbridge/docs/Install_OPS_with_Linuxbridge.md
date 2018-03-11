@@ -405,7 +405,7 @@ keystone-manage credential_setup --keystone-user keystone --keystone-group keyst
 - Bootstrap Identity service:  
 ```
 keystone-manage bootstrap --bootstrap-password Welcome123 \
-  --bootstrap-admin-url http://controller:35357/v3/ \
+  --bootstrap-admin-url http://controller:5000/v3/ \
   --bootstrap-internal-url http://controller:5000/v3/ \
   --bootstrap-public-url http://controller:5000/v3/ \
   --bootstrap-region-id RegionOne
@@ -430,7 +430,7 @@ export OS_PASSWORD=Welcome123
 export OS_PROJECT_NAME=admin
 export OS_USER_DOMAIN_NAME=Default
 export OS_PROJECT_DOMAIN_NAME=Default
-export OS_AUTH_URL=http://controller:35357/v3
+export OS_AUTH_URL=http://controller:5000/v3
 export OS_IDENTITY_API_VERSION=3
 ```
 
@@ -473,7 +473,7 @@ export OS_USER_DOMAIN_NAME=Default
 export OS_PROJECT_NAME=admin
 export OS_USERNAME=admin
 export OS_PASSWORD=Welcome123
-export OS_AUTH_URL=http://controller:35357/v3
+export OS_AUTH_URL=http://controller:5000/v3
 export OS_IDENTITY_API_VERSION=3
 export OS_IMAGE_API_VERSION=2
 ```
@@ -659,7 +659,7 @@ apt install glance
   [keystone_authtoken]
   # ...
   auth_uri = http://controller:5000
-  auth_url = http://controller:35357
+  auth_url = http://controller:5000
   memcached_servers = controller:11211
   auth_type = password
   project_domain_name = default
@@ -695,7 +695,7 @@ apt install glance
   [keystone_authtoken]
   # ...
   auth_uri = http://controller:5000
-  auth_url = http://controller:35357
+  auth_url = http://controller:5000
   memcached_servers = controller:11211
   auth_type = password
   project_domain_name = default
@@ -1008,7 +1008,7 @@ apt install nova-api nova-conductor nova-consoleauth \
   [keystone_authtoken]
   # ...
   auth_uri = http://controller:5000
-  auth_url = http://controller:35357
+  auth_url = http://controller:5000
   memcached_servers = controller:11211
   auth_type = password
   project_domain_name = default
@@ -1066,7 +1066,7 @@ apt install nova-api nova-conductor nova-consoleauth \
   project_name = service
   auth_type = password
   user_domain_name = Default
-  auth_url = http://controller:35357/v3
+  auth_url = http://controller:5000/v3
   username = placement
   password = Welcome123
   ```
@@ -1137,7 +1137,7 @@ auth_strategy = keystone
 [keystone_authtoken]
 # ...
 auth_uri = http://controller:5000
-auth_url = http://controller:35357
+auth_url = http://controller:5000
 memcached_servers = controller:11211
 auth_type = password
 project_domain_name = default
@@ -1198,7 +1198,7 @@ project_domain_name = Default
 project_name = service
 auth_type = password
 user_domain_name = Default
-auth_url = http://controller:35357/v3
+auth_url = http://controller:5000/v3
 username = placement
 password = Welcome123
 ```
@@ -1429,7 +1429,7 @@ Trong section `[neutron]`, cấu hình truy cập parameters, kích hoạt metad
 [neutron]
 # ...
 url = http://controller:9696
-auth_url = http://controller:35357
+auth_url = http://controller:5000
 auth_type = password
 project_domain_name = default
 user_domain_name = default
@@ -1493,7 +1493,7 @@ apt install neutron-linuxbridge-agent
   [keystone_authtoken]
   # ...
   auth_uri = http://controller:5000
-  auth_url = http://controller:35357
+  auth_url = http://controller:5000
   memcached_servers = controller:11211
   auth_type = password
   project_domain_name = default
@@ -1516,7 +1516,7 @@ Trong section `[neutron]`, cấu hình truy cập parameters:
 [neutron]
 # ...
 url = http://controller:9696
-auth_url = http://controller:35357
+auth_url = http://controller:5000
 auth_type = password
 project_domain_name = default
 user_domain_name = default
