@@ -116,6 +116,7 @@ next-server 172.16.69.101;
 filename "pxelinux.0";
 ```
 
+Chú ý: `172.16.69.101` là IP của `OPS-setup`.  
 \- Khởi động lại dịch vụ `isc-dhcp-server`:  
 ```
 # systemctl restart isc-dhcp-server
@@ -225,6 +226,8 @@ menu end
 
 ```
 
+Chú ý: `172.16.69.101` là IP của `OPS-setup`.  
+
 <a name="3.4"></a>
 ## 3.4.Cấu hình netboot image
 \- Như phần trên đã download Ubuntu 16.04 và mount vào thư mục /mnt. Giờ ta copy netboot image đến thư mục `/var/lib/tftpboot` :  
@@ -262,6 +265,7 @@ label 1
         append initrd=centos-installer/initrd.img method=http://172.16.69.101/centos7
 ```
 
+Chú ý: `172.16.69.101` là IP của `OPS-setup`.  
 <a name="3.5"></a>
 ## 3.5.Cấu hình để PXE client cài Ubuntu Server 16.04 và Centos 7 từ repo local
 \- Cài web server apache2:  
@@ -455,6 +459,8 @@ Tạo file `/var/www/html/kscentos.cfg` với nội dung như sau:
 ```
 ```
 
+Chú ý: `172.16.69.101` là IP của `OPS-setup`.  
+
 <a name="3.8"></a>
 ## 3.8.Cấu hình cài đặt tự động cho OpenStack
 \- Download các file shell scripts. Thực hiện các câu lệnh sau:  
@@ -550,6 +556,8 @@ menu begin OpenStack
 menu end
 ```
 
+Chú ý: `172.16.69.101` là IP của `OPS-setup`.  
+
 <a name="5"></a>
 # 5.Demo
 <img src="images/ops1.png" />
@@ -569,4 +577,6 @@ Quá trình cài theo docs https://docs.openstack.org/pike/install/ nhưng có 1
 apt install cinder-volume -y
 apt install thin-provisioning-tools -y
 ```
+
+
 
