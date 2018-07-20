@@ -9,12 +9,14 @@
 	- [3.3.Cấu hình prelinux](#3.3)
 	- [3.4.Cấu hình netboot image](#3.4)
 	- [3.5.Cấu hình để PXE client cài Ubuntu Server 16.04 và Centos 7 từ repo local](#3.5)
-	- [3.6.File preseed và kickstart cho hệ điều hành Ubuntu 16.04 và Centos 7](#3.6)
-	- [3.7.Cấu hình cài đặt tự động cho OpenStack](#3.7)
+	- [3.6.Cài apt-cacher-ng](#3.6)
+	- [3.7.File preseed và kickstart cho hệ điều hành Ubuntu 16.04 và Centos 7](#3.7)
+	- [3.8.Cấu hình cài đặt tự động cho OpenStack](#3.8)
 - [4.Hướng dẫn sử dụng](#4)
 	- [4.1.Tạo file preseed cho các node OpenStack](#4.1)
 	- [4.2.Mở rộng cho n node Compute và n node Block](#4.2)
 - [5.Demo](#5)
+- [6.Một số chú ý khi cài OpenStack phiên bản Pike với Open vSwitch](#6)
 
 <a name="1"></a>
 # 1.Mô hình
@@ -287,7 +289,77 @@ cp -r /mnt /var/www/html/ubuntu-16.04
 ```
 
 <a name="3.6"></a>
-## 3.6.File preseed và kickstart cho hệ điều hành Ubuntu 16.04 và Centos 7
+## 3.6.Cài apt-cacher-ng
+\- Cài `apt-cacher-ng` bằng cách thực hiện câu lệnh sau:  
+```
+sudo apt-get install apt-cacher-ng
+```
+
+\- Cấu hình trong file `/etc/apt-cacher-ng/acng.conf` (nếu dòng đó đã được comment thì xóa bỏ dấu "#" để uncomment)  
+- Cấu hình thư mục lưu trữ pachage dpkg:  
+```
+CacheDir: /var/cache/apt-cacher-ng
+```
+
+- Lắng nghe trên tất các địa chỉ IP:  
+```
+# BindAddress: localhost 192.168.7.254 publicNameOnMainInterface
+BindAddress: 0.0.0.0
+```
+
+- Lắng nghe trên port 3142, nếu cần thay đổi port chúng ta thay đổi tại đây:  
+```
+Port:3142
+```
+
+- Định nghĩa các bản phân phối như Ubuntu, Debian, etc, tất cả cần được cached.  
+```
+Remap-debrep: file:deb_mirror*.gz /debian ; file:backends_debian # Debian Archives
+Remap-uburep: file:ubuntu_mirrors /ubuntu ; file:backends_ubuntu # Ubuntu Archives
+Remap-cygwin: file:cygwin_mirrors /cygwin # ; file:backends_cygwin # incomplete, please create this file or specify preferred mirrors here
+Remap-sfnet:  file:sfnet_mirrors # ; file:backends_sfnet # incomplete, please create this file or specify preferred mirrors here
+Remap-alxrep: file:archlx_mirrors /archlinux # ; file:backend_archlx # Arch Linux
+Remap-fedora: file:fedora_mirrors # Fedora Linux
+Remap-epel:   file:epel_mirrors # Fedora EPEL
+Remap-slrep:  file:sl_mirrors # Scientific Linux
+Remap-gentoo: file:gentoo_mirrors.gz /gentoo ; file:backends_gentoo # Gentoo Archives
+```
+
+- Nếu cần biên bản báo cáo về `apt-cache` trong web interface, chúng ta cần enable dòng sau:  
+```
+ReportPage: acng-report.html
+```
+
+- Enable log (File log này ghi lại thông tin các package được cached lại trong server)  
+```
+LogDir: /var/log/apt-cacher-ng
+```
+
+- Để có thêm nhiều thông tin về "log", ta uncommnet dòng sau đây:  
+```
+VerboseLog: 1
+```
+
+Chúng ta có thể thiết lập về “0” để chỉ ghi log về type, time, size của packages.  
+
+- Để chạy service apt-cacher-ng, ta enable file pid:  
+```
+PidFile: /var/run/apt-cacher-ng/pid
+```
+
+- Enable xóa bỏ các files không được hỗ trợ:  
+```
+ExTreshold: 4
+```
+
+- Sau khi cấu hình xong, restart service `apt-cacher-ng`.  
+```
+systemctl restart apt-cacher-ng
+```
+
+
+<a name="3.7"></a>
+## 3.7.File preseed và kickstart cho hệ điều hành Ubuntu 16.04 và Centos 7
 \- File preseed  cho `Ubuntu 16.04`:  
 Tạo file `/var/www/html/ubuntu-preseed.cfg` với nội dung như sau:  
 ```
@@ -383,8 +455,8 @@ Tạo file `/var/www/html/kscentos.cfg` với nội dung như sau:
 ```
 ```
 
-<a name="3.7"></a>
-## 3.7.Cấu hình cài đặt tự động cho OpenStack
+<a name="3.8"></a>
+## 3.8.Cấu hình cài đặt tự động cho OpenStack
 \- Download các file shell scripts. Thực hiện các câu lệnh sau:  
 ```
 apt-get install subversion -y
@@ -487,4 +559,24 @@ menu end
 \- Ví dụ: ta cài node Controller:  
 <img src="images/ops3.png" />
 
+# 6.Một số chú ý khi cài OpenStack phiên bản Pike với Open vSwitch
+## 6.1.Chú ý 1
+Quá trình cài theo docs https://docs.openstack.org/pike/install/ nhưng có 1 số chỗ bổ sung:  
+
+### Project Cinder
+- Trên node Storage, cài thêm phần mềm `thin-provisioning-tools` khi cài cinder-volume:  
+```
+apt install cinder-volume -y
+apt install thin-provisioning-tools -y
+```
+
+## 6.1.Chú ý 2
+\- Khi mình sử dụng PXE để cài OpenStack phiên bản Pike với Open vSwitch, mình đã viết lệnh chạy scripts đó vào file /etc/rc.local để tự động cài OpenStack sau khi boot xong hệ điều hành.  
+Điều này dẫn đến lỗi database của Open vSwitch khi cài các gói phần mềm cho project Neutron trên cả node Controller và Compute, vì vậy ta phải thêm lệnh restart openvswitch vào sau lệnh cài các gói phần mềm Neutron như sau:  
+```
+apt install neutron-server neutron-plugin-ml2 \
+    neutron-openvswitch-agent neutron-l3-agent neutron-dhcp-agent \
+    neutron-metadata-agent -y
+systemctl restart openvswitch-switch
+```
 
