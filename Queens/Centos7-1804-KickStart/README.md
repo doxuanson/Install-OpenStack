@@ -122,17 +122,17 @@ cd /var/www/html/kickstart_OPS
 
   - Sinh file kickstart cho node Controller:  
   ```
-  source CTL_ps_create.sh
+  source CTL_ks_create.sh
   ```
 
   - Sinh file kickstart cho node Compute1, đầu tiên cho thiết lập biến `com_num` bằng `1` (`com_num=1`) trong file config.sh, sau đó:
   ```
-  source COM_ps_create.sh
+  source COM_ks_create.sh
   ```
 
   - Tương tự sinh file kickstart cho node Compute2, thiết lập biến `com_num` bằng `2` (`com_num=2`) trong file config.sh, sau đó:  
   ```
-  source COM_ps_create.sh
+  source COM_ks_create.sh
   ```
 
 Các file sinh ra sẽ có tên lần lượt như sau:  
