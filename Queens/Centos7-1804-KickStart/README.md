@@ -1,9 +1,19 @@
 # Cài đặt OpenStack Queens trên Centos 7.5.18.04 sử dụng Cobbler
 
 # MỤC LỤC
-
-
-
+- [1.Mô hình](#1mô-hình)
+- [2.IP Planning](#2ip-planning)
+- [3.Cài đặt trên Cobbler](#3cài-đặt-trên-cobbler)
+  - [3.1.Cài đặt Cobbler](#31cài-đặt-cobbler)
+  - [3.2.Import hệ điều hành Ubuntu 16.04 và Centos 7](#32import-hệ-điều-hành-ubuntu-1604-và-centos-7)
+  - [3.3.Tạo file kickstart hệ điều hành Ubuntu 16.04 và Centos 7](#33tạo-file-kickstart-hệ-điều-hành-ubuntu-1604-và-centos-7)
+    - [a.Ubuntu Server 16.04](#aubuntu-server-1604)
+    - [b.Centos 7](#bcentos-7)
+- [4.Cấu hình cài đặt tự động cho OpenStack](#4cấu-hình-cài-đặt-tự-động-cho-openstack)
+- [5.Hướng dẫn sử dụng](#5hướng-dẫn-sử-dụng)
+  - [5.1.Tạo file kickstart cho các node OpenStack](#51tạo-file-kickstart-cho-các-node-openstack)
+  - [5.2.Tạo profiles cho Controller, Compute](#52tạo-profiles-cho-controller,-compute)
+- [6.Demo](#6demo)
 
 
 # 1.Mô hình
@@ -12,7 +22,7 @@
 
 <img src="images/mo-hinh.png" />
 
-<a name="2"></a>
+
 
 # 2.IP Planning
 Yêu cầu phần cứng và địa chỉ IP cho các nodes.  
@@ -78,7 +88,7 @@ Trường "Kernel Options" có nội dung: `interface=eth0 biosdevname=0 net.ifn
 \- Tạo profile tên `Centos7-auto`, với cấu hình như sau:  
 <img src="images/caidat-cobbler-2.png" />
 
-## 4.Cấu hình cài đặt tự động cho OpenStack
+# 4.Cấu hình cài đặt tự động cho OpenStack
 \- Download các file shell scripts. Thực hiện các câu lệnh sau:  
 ```
 yum install subversion -y
@@ -98,15 +108,14 @@ chmod -R 755 /var/www/html/OPS-setup
 chmod -R 755 /var/www/html/kickstart_OPS
 ```
 
-# 4.Hướng dẫn sử dụng
+# 5.Hướng dẫn sử dụng
 \- Thay đổi nội dung các file `/var/www/html/OPS-setup/config.sh` và `/var/www/html/kickstart_OPS/config.sh` theo mô hình của bạn.  
 
 >Chú ý: Mật khẩu cho node phải đồng nhất trong 2 file cấu hình.
 
 \- Trong bài lab này, mình cài đặt mô hình OpenStack gồm 1 node Controller, nhiều node Compute.  
 
-<a name="4.1"></a>
-## 4.1.Tạo file kickstart cho các node OpenStack
+## 5.1.Tạo file kickstart cho các node OpenStack
 \- Dùng các file trong thư mục `/var/www/html/kickstart_OPS` để sinh các file kickstart cho các node OpenStack.  
 ```
 cd /var/www/html/kickstart_OPS
@@ -137,7 +146,7 @@ cp /var/www/html/kickstart_OPS/ks_COM1.ks` /var/lib/cobbler/kickstarts
 cp /var/www/html/kickstart_OPS/ks_COM2.ks` /var/lib/cobbler/kickstarts
 ```
 
-## 4.2.Tạo profiles cho Controller, Compute
+## 5.2.Tạo profiles cho Controller, Compute
 \- Controller:  
 <img src="images/huongdansd-1.png" />
 
@@ -147,7 +156,7 @@ cp /var/www/html/kickstart_OPS/ks_COM2.ks` /var/lib/cobbler/kickstarts
 \- Compute2:  
 <img src="images/huongdansd-3.png" />
 
-# 5.Demo
+# 6.Demo
 <img src="images/demo-1.png" />
 
 <img src="images/demo-2.png" />
