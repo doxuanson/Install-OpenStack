@@ -17,12 +17,11 @@
 
 
 # 1.Mô hình
+\- Node Cobbler chạy hệ điều hành Centos 7.5.18.04.  
 \- Mô hình cài đặt OpenStack Queens gồm 1 node Controller, nhiều node Compute.  
 \- Cài đặt các project: Keystone, Glance, Nova, Neutron, Horizon.   
 
 <img src="images/mo-hinh.png" />
-
-
 
 # 2.IP Planning
 Yêu cầu phần cứng và địa chỉ IP cho các nodes.  
@@ -141,9 +140,9 @@ Các file sinh ra sẽ có tên lần lượt như sau:
 
 \- Copy các file vừa sinh ra sang thư mục kickstart của Cobbler:  
 ```
-cp /var/www/html/kickstart_OPS/ks_CTL.ks` /var/lib/cobbler/kickstarts
-cp /var/www/html/kickstart_OPS/ks_COM1.ks` /var/lib/cobbler/kickstarts
-cp /var/www/html/kickstart_OPS/ks_COM2.ks` /var/lib/cobbler/kickstarts
+cp /var/www/html/kickstart_OPS/ks_CTL.ks /var/lib/cobbler/kickstarts
+cp /var/www/html/kickstart_OPS/ks_COM1.ks /var/lib/cobbler/kickstarts
+cp /var/www/html/kickstart_OPS/ks_COM2.ks /var/lib/cobbler/kickstarts
 ```
 
 ## 5.2.Tạo profiles cho Controller, Compute

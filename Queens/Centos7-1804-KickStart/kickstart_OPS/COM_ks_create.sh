@@ -72,7 +72,7 @@ chmod 755 /etc/rc.d/rc.local
 yum update -y
 yum install wget -y
 cd /root
-wget --no-parent --recursive -nH --reject="index.html*" http://$COBBLER_IP/$PATH_OPSsetup/
+wget --no-parent --recursive -nH --reject="index.html*" http://$PATH_OPSsetup/
 cd /root/$FOLDER_ROOT_NAME/$COM_FOLDER_NAME
 echo "COM_NUM=$com_num" > com_num.sh
 source com-all.sh

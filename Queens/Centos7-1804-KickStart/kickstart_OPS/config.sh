@@ -6,13 +6,12 @@
 ##########################################
 
 # Variable
-## IP address of COBBLER, APT_CACHE_SERVER and path for repo Ubuntu
-COBBLER_IP=172.16.69.21
+## IP address of COBBLER and path for repo Centos 7.5.18.04
 REPO_HOSTNAME=http://172.16.69.21
 REPO_FOLDER=/cblr/links/Centos7-x86_64
 
-## Folder name contain scripts to install OpenStack
-PATH_OPSsetup="OPS-setup"
+## PATH scripts to install OpenStack
+PATH_OPSsetup="http://172.16.69.21/OPS-setup"
 
 ## Folder name OPS
 FOLDER_ROOT_NAME=OPS-setup
