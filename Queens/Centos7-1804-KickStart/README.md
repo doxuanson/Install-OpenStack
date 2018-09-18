@@ -97,12 +97,13 @@ svn export https://github.com/doxuanson/Install-OpenStack/trunk/Queens/Centos7-1
 chmod -R 755 /var/www/html/OPS-setup
 chmod -R 755 /var/www/html/kickstart_OPS
 ```
+
 # 4.Hướng dẫn sử dụng
 \- Thay đổi nội dung các file `/var/www/html/OPS-setup/config.sh` và `/var/www/html/kickstart_OPS/config.sh` theo mô hình của bạn.  
 
 >Chú ý: Mật khẩu cho node phải đồng nhất trong 2 file cấu hình.
 
-\- Trong bài lab này, mình cài đặt mô hình OpenStack gồm 1 node Controller, nhiều node Compute và nhiều node Block.
+\- Trong bài lab này, mình cài đặt mô hình OpenStack gồm 1 node Controller, nhiều node Compute.  
 
 <a name="4.1"></a>
 ## 4.1.Tạo file kickstart cho các node OpenStack
@@ -138,14 +139,18 @@ cp /var/www/html/kickstart_OPS/ks_COM2.ks` /var/lib/cobbler/kickstarts
 
 ## 4.2.Tạo profiles cho Controller, Compute
 \- Controller:  
+<img src="images/huongdansd-1.png" />
 
+\- Compute1:  
+<img src="images/huongdansd-2.png" />
 
+\- Compute2:  
+<img src="images/huongdansd-3.png" />
 
 # 5.Demo
+<img src="images/demo-1.png" />
 
-
-
-
+<img src="images/demo-2.png" />
 
 
 
