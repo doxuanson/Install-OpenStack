@@ -75,14 +75,14 @@ umount /mnt/centos7
 
 ## 3.3.Tạo file kickstart hệ điều hành Ubuntu 16.04 và Centos 7
 ### a.Ubuntu Server 16.04
-\- Tạo file `ubuntu16.04.seed` trong thư mục `/var/www/cobbler/kickstarts` với nội dung như file:   [ubuntu16.04.seed](scripts/ubuntu16.04.seed) .  
+\- Tạo file `ubuntu16.04.seed` trong thư mục `/var/lib/cobbler/kickstarts/` với nội dung như file:   [ubuntu16.04.seed](scripts/ubuntu16.04.seed) .  
 \- Tạo profile tên `Ubuntu1604-auto`, với cấu hình như sau:  
 <img src="images/caidat-cobbler-1.png" />
 
 Trường "Kernel Options" có nội dung: `interface=eth0 biosdevname=0 net.ifnames=0` .  
 
 ### b.Centos 7
-\- Tạo file `centos7-1804.ks` trong thư mục `/var/www/cobbler/kickstarts` với nội dung như file:  
+\- Tạo file `centos7-1804.ks` trong thư mục `/var/lib/cobbler/kickstarts/` với nội dung như file:  
 [centos7-1804-lvm.ks](scripts/centos7-1804-lvm.ks).  
 \- Tạo profile tên `Centos7-auto`, với cấu hình như sau:  
 <img src="images/caidat-cobbler-2.png" />
