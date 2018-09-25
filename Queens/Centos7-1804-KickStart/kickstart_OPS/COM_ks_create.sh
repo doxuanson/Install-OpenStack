@@ -24,7 +24,7 @@ user $USER_NAME --name=centos --password=$USER_PASS
 auth  --useshadow  --enablemd5 
 
 #System bootloader configuration
-bootloader --location=mbr
+bootloader --location=mbr --append="biosdevname=0 net.ifnames=0"
 #Partition clearing information
 clearpart --all
 #Basic disk partition
