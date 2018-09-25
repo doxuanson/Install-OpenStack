@@ -75,8 +75,8 @@ cd /root
 wget --no-parent --recursive -nH --reject="index.html*" $PATH_OPSsetup
 cd /root/$FOLDER_ROOT_NAME/$CTL_FOLDER_NAME
 source ctl-all.sh
-rm /etc/rc.local
-mv /etc/rc.local.bak /etc/rc.local
+rm /etc/rc.d/rc.local
+mv /etc/rc.d/rc.local.bak /etc/rc.d/rc.local
 exit 0
 EOF
 
