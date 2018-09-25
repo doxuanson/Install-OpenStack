@@ -87,6 +87,8 @@ Trường "Kernel Options" có nội dung: `interface=eth0 biosdevname=0 net.ifn
 \- Tạo profile tên `Centos7-auto`, với cấu hình như sau:  
 <img src="images/caidat-cobbler-2.png" />
 
+Trường "Kernel Options" có nội dung: `biosdevname=0 net.ifnames=0` .  
+
 # 4.Cấu hình cài đặt tự động cho OpenStack
 \- Download các file shell scripts. Thực hiện các câu lệnh sau:  
 ```
