@@ -97,8 +97,8 @@ svn export https://github.com/doxuanson/Install-OpenStack/trunk/Queens/Centos7-1
 
 \- Copy 2 thư mục vừa tải về vào thư mục `/var/www/html` :  
 ```
-# cp OPS-setup /var/www/html
-# cp kickstart_OPS /var/www/html
+# cp -r OPS-setup /var/www/html
+# cp -r kickstart_OPS /var/www/html
 ```
 
 \- Thực hiện lệnh:  
