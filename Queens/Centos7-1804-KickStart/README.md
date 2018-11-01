@@ -12,8 +12,13 @@
 - [4.Cấu hình cài đặt tự động cho OpenStack](#4cấu-hình-cài-đặt-tự-động-cho-openstack)
 - [5.Hướng dẫn sử dụng](#5hướng-dẫn-sử-dụng)
   - [5.1.Tạo file kickstart cho các node OpenStack](#51tạo-file-kickstart-cho-các-node-openstack)
-  - [5.2.Tạo profiles cho Controller, Compute](#52tạo-profiles-cho-controller,-compute)
+  - [5.2.Tạo profiles cho Controller, Compute](#52tạo-profiles-cho-controller-compute)
 - [6.Demo](#6demo)
+- [7.Chú ý khi cài OpenStack phiên bản Queens sử dụng OpenvSwitch trên Centos 7.5.18.04 sử dụng Cobbler](#7chú-ý-khi-cài-openstack-phiên-bản-queens-sử-dụng-openvswitch-trên-centos-751804-sử-dụng-cobbler)
+  - [5.1.Chú ý 1](#51chú-ý-1)
+  - [5.2.Chú ý 2](#52chú-ý-2)
+  - [5.3.Chú ý 3](#53chú-ý-3)
+
 
 
 # 1.Mô hình
@@ -163,7 +168,70 @@ cp /var/www/html/kickstart_OPS/ks_COM2.ks /var/lib/cobbler/kickstarts
 <img src="images/demo-2.png" />
 
 
+# 7.Chú ý khi cài OpenStack phiên bản Queens sử dụng OpenvSwitch trên Centos 7.5.18.04 sử dụng Cobbler
+\- Quá trình cài theo docs:  
+- https://docs.openstack.org/queens/install/
+- https://docs.openstack.org/ocata/networking-guide/deploy.html
 
+nhưng có 1 số chỗ bổ sung.  
+
+## 5.1.Chú ý 1
+\- Stop và disable `firewalld`, `selinux`.  
+
+## 5.2.Chú ý 2
+\- Trên node Controller, tại tất cả các project như Keystone, Glance, Nova, Neutron;  khi tạo database ta cần thêm người dùng:  
+```
+'<project_name'@'$CTL_MGNT_IP'
+```
+
+\- VD đối với Keystone và Nova:  
+```
+CREATE DATABASE keystone;
+GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'localhost' \
+IDENTIFIED BY '$KEYSTONE_DBPASS';
+GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'%' \
+IDENTIFIED BY '$KEYSTONE_DBPASS';
+GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'$CTL_MGNT_IP' \
+IDENTIFIED BY '$KEYSTONE_DBPASS';
+```
+
+```
+CREATE DATABASE nova_api;
+CREATE DATABASE nova;
+CREATE DATABASE nova_cell0;
+GRANT ALL PRIVILEGES ON nova_api.* TO 'nova'@'localhost' \
+  IDENTIFIED BY '$NOVA_DBPASS';
+GRANT ALL PRIVILEGES ON nova_api.* TO 'nova'@'%' \
+  IDENTIFIED BY '$NOVA_DBPASS';
+GRANT ALL PRIVILEGES ON nova_api.* TO 'nova'@'$CTL_MGNT_IP' \
+  IDENTIFIED BY '$NOVA_DBPASS';
+
+GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'localhost' \
+  IDENTIFIED BY '$NOVA_DBPASS';
+GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'%' \
+  IDENTIFIED BY '$NOVA_DBPASS';
+GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'$CTL_MGNT_IP' \
+  IDENTIFIED BY '$NOVA_DBPASS';
+
+GRANT ALL PRIVILEGES ON nova_cell0.* TO 'nova'@'localhost' \
+  IDENTIFIED BY '$NOVA_DBPASS';
+GRANT ALL PRIVILEGES ON nova_cell0.* TO 'nova'@'%' \
+  IDENTIFIED BY '$NOVA_DBPASS';
+GRANT ALL PRIVILEGES ON nova_cell0.* TO 'nova'@'$CTL_MGNT_IP' \
+  IDENTIFIED BY '$NOVA_DBPASS';
+```
+
+## 5.3.Chú ý 3
+\- Sau khi thực hiện lệnh:  
+```
+yum install openstack-neutron openstack-neutron-ml2 \
+openstack-neutron-openvswitch ebtables -y
+```
+
+ta cần restart lại dịch vụ openvswitch:  
+```
+systemctl restart openvswitch
+```
 
 
 
