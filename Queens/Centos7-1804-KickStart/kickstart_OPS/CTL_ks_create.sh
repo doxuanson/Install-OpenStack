@@ -64,6 +64,8 @@ reboot
 yum update -y
 mkdir /root/test
 
+echo "proxy=http://$CACHER_SERVER:3142" >> /etc/yum.conf
+
 cp /etc/rc.d/rc.local /etc/rc.d/rc.local.bak
 chmod 755 /etc/rc.d/rc.local
 

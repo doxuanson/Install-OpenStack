@@ -9,15 +9,16 @@
   - [3.3.Tạo file kickstart hệ điều hành Ubuntu 16.04 và Centos 7](#33tạo-file-kickstart-hệ-điều-hành-ubuntu-1604-và-centos-7)
     - [a.Ubuntu Server 16.04](#aubuntu-server-1604)
     - [b.Centos 7](#bcentos-7)
-- [4.Cấu hình cài đặt tự động cho OpenStack](#4cấu-hình-cài-đặt-tự-động-cho-openstack)
-- [5.Hướng dẫn sử dụng](#5hướng-dẫn-sử-dụng)
-  - [5.1.Tạo file kickstart cho các node OpenStack](#51tạo-file-kickstart-cho-các-node-openstack)
-  - [5.2.Tạo profiles cho Controller, Compute](#52tạo-profiles-cho-controller-compute)
+- [4.Cài đặt APT-CACHER-NG](#4cài-đặt-apt-cacher-ng)
+- [5.Cấu hình cài đặt tự động cho OpenStack](#5cấu-hình-cài-đặt-tự-động-cho-openstack)
+- [6.Hướng dẫn sử dụng](#6hướng-dẫn-sử-dụng)
+  - [6.1.Tạo file kickstart cho các node OpenStack](#61tạo-file-kickstart-cho-các-node-openstack)
+  - [6.2.Tạo profiles cho Controller, Compute](#62tạo-profiles-cho-controller-compute)
 - [6.Demo](#6demo)
 - [7.Chú ý khi cài OpenStack phiên bản Queens sử dụng OpenvSwitch trên Centos 7.5.18.04 sử dụng Cobbler](#7chú-ý-khi-cài-openstack-phiên-bản-queens-sử-dụng-openvswitch-trên-centos-751804-sử-dụng-cobbler)
-  - [5.1.Chú ý 1](#51chú-ý-1)
-  - [5.2.Chú ý 2](#52chú-ý-2)
-  - [5.3.Chú ý 3](#53chú-ý-3)
+  - [7.1.Chú ý 1](#71chú-ý-1)
+  - [7.2.Chú ý 2](#72chú-ý-2)
+  - [7.3.Chú ý 3](#73chú-ý-3)
 
 
 
@@ -94,7 +95,19 @@ Trường "Kernel Options" có nội dung: `interface=eth0 biosdevname=0 net.ifn
 
 Trường "Kernel Options" có nội dung: `biosdevname=0 net.ifnames=0` .  
 
-# 4.Cấu hình cài đặt tự động cho OpenStack
+# 4.Cài đặt APT-CACHER-NG
+\- Sử dụng Cobbler, cài Ubuntu Server 16.04.  
+\- Download script cài đặt Cobbler tại link:  
+[Scripts cài apt-cacher-ng](scripts/apt-cacher-ng_install.sh)  
+
+\- Chú ý: Thiết lập các biến môi trường sao cho phù hợp mô hình.  
+\- Thực hiện lệnh:  
+```
+chmod 755 apt-cacher-ng_install.sh
+source apt-cacher-ng_install.sh
+```
+
+# 5.Cấu hình cài đặt tự động cho OpenStack
 \- Download các file shell scripts. Thực hiện các câu lệnh sau:  
 ```
 yum install subversion -y
@@ -114,14 +127,14 @@ chmod -R 755 /var/www/html/OPS-setup
 chmod -R 755 /var/www/html/kickstart_OPS
 ```
 
-# 5.Hướng dẫn sử dụng
+# 6.Hướng dẫn sử dụng
 \- Thay đổi nội dung các file `/var/www/html/OPS-setup/config.sh` và `/var/www/html/kickstart_OPS/config.sh` theo mô hình của bạn.  
 
 >Chú ý: Mật khẩu cho node phải đồng nhất trong 2 file cấu hình.
 
 \- Trong bài lab này, mình cài đặt mô hình OpenStack gồm 1 node Controller, nhiều node Compute.  
 
-## 5.1.Tạo file kickstart cho các node OpenStack
+## 6.1.Tạo file kickstart cho các node OpenStack
 \- Dùng các file trong thư mục `/var/www/html/kickstart_OPS` để sinh các file kickstart cho các node OpenStack.  
 ```
 cd /var/www/html/kickstart_OPS
@@ -152,7 +165,7 @@ cp /var/www/html/kickstart_OPS/ks_COM1.ks /var/lib/cobbler/kickstarts
 cp /var/www/html/kickstart_OPS/ks_COM2.ks /var/lib/cobbler/kickstarts
 ```
 
-## 5.2.Tạo profiles cho Controller, Compute
+## 6.2.Tạo profiles cho Controller, Compute
 \- Controller:  
 <img src="images/huongdansd-1.png" />
 
@@ -175,10 +188,10 @@ cp /var/www/html/kickstart_OPS/ks_COM2.ks /var/lib/cobbler/kickstarts
 
 nhưng có 1 số chỗ bổ sung.  
 
-## 5.1.Chú ý 1
+## 7.1.Chú ý 1
 \- Stop và disable `firewalld`, `selinux`.  
 
-## 5.2.Chú ý 2
+## 7.2.Chú ý 2
 \- Trên node Controller, tại tất cả các project như Keystone, Glance, Nova, Neutron;  khi tạo database ta cần thêm người dùng:  
 ```
 '<project_name'@'$CTL_MGNT_IP'
@@ -221,7 +234,7 @@ GRANT ALL PRIVILEGES ON nova_cell0.* TO 'nova'@'$CTL_MGNT_IP' \
   IDENTIFIED BY '$NOVA_DBPASS';
 ```
 
-## 5.3.Chú ý 3
+## 7.3.Chú ý 3
 \- Sau khi thực hiện lệnh:  
 ```
 yum install openstack-neutron openstack-neutron-ml2 \

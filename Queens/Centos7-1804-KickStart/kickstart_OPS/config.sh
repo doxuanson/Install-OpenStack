@@ -7,8 +7,11 @@
 
 # Variable
 ## IP address of COBBLER and path for repo Centos 7.5.18.04
-REPO_HOSTNAME=http://172.16.69.21
+REPO_HOSTNAME=http://172.16.69.11
 REPO_FOLDER=/cblr/links/Centos7-x86_64
+
+## IP address of Cacher-NG
+CACHER_SERVER=172.16.69.21
 
 ## PATH scripts to install OpenStack
 PATH_OPSsetup="http://172.16.69.21/OPS-setup"
