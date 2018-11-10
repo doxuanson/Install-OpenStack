@@ -28,20 +28,24 @@ Yêu cầu phần cứng và địa chỉ IP cho các nodes.
 - https://docs.openstack.org/ocata/networking-guide/deploy.html
 
 # 4.Thực hiện chạy scripts trên từng node Controller và Compute
-\- Set quyền `755` cho các files đó.  
+\- Trên tất các node:
+- Thực hiện cấu hình cho interface `eth0` như trong mô hình, các interface khác không cần cấu hình.  
+- Thực hiện đặt mật khẩu người dùng `root` trên tất cả các node sao cho giống nhau, ở đây mình đặt là `welcome123`.
+
+\- Đứng từ một máy ở cùng dải mạng với interface `eth0` của các node, thực hiện ssh vào các node:  
+- Set quyền `755` cho các files đó.  
 ```
 chmod -R 755 OPS-setup
 ```
 
-\- Thay đổi nội dung các file `OPS-setup/config.sh` theo mô hình của bạn.  
-\- Thực thi các file bằng command như sau:
-- Trên node Controller:
+- Thay đổi nội dung các file `OPS-setup/config.sh` theo mô hình của bạn.  
+- Trên node Controller, thực hiện lệnh:  
 ```
 cd OPS-setup/CTL
 source ctl-all.sh
 ```
 
-- Sau khi cài đặt xong node Controller, chuyển sang các node Compute, sửa file `OPS-setup/COM/com_num.sh` tương ứng với số thú tự node Compute:   
+- Sau khi cài đặt xong node Controller, chuyển sang các node Compute, sửa file `OPS-setup/COM/com_num.sh` tương ứng với số thú tự node Compute, thực hiện lệnh:  
 ```
 cd OPS-setup/COM
 source com-all.sh
