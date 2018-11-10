@@ -6,7 +6,7 @@
 - [2.IP Planning](#2ip-planning)
 - [3.Cài đặt thủ công](#3cài-đặt-thủ-công)
 - [4.Thực hiện chạy scripts trên từng node Controller và Compute](#4thực-hiện-chạy-scripts-trên-từng-node-controller-và-compute)
-- [5.Chú ý khi cài OpenStack phiên bản Queens sử dụng OpenvSwitch trên Centos 7.5.18.04](#5chú-ý-khi-cài-openstack-phiên-bản-queens-sử-dụng-openvswitch-trên-centos-751804)
+- [5.Chú ý khi cài OpenStack phiên bản Queens sử dụng OpenvSwitch trên Ubuntu Server 16.04](#5chú-ý-khi-cài-openstack-phiên-bản-queens-sử-dụng-openvswitch-trên-ubuntu-server-1604)
   - [5.1.Chú ý 1](#51chú-ý-1)
   - [5.2.Chú ý 2](#52chú-ý-2)
 
@@ -70,7 +70,7 @@ cd OPS-setup/COM
 source com-all.sh
 ```
 
-# 5.Chú ý khi cài OpenStack phiên bản Queens sử dụng OpenvSwitch trên Centos 7.5.18.04
+# 5.Chú ý khi cài OpenStack phiên bản Queens sử dụng OpenvSwitch trên Ubuntu Server 16.04
 \- Quá trình cài theo docs:  
 - https://docs.openstack.org/queens/install/
 - https://docs.openstack.org/ocata/networking-guide/deploy.html
