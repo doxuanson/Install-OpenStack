@@ -19,6 +19,7 @@
   - [7.1.Chú ý 1](#71chú-ý-1)
   - [7.2.Chú ý 2](#72chú-ý-2)
   - [7.3.Chú ý 3](#73chú-ý-3)
+  - [7.4.Chú ý 4](#74chú-ý-4)
 
 
 
@@ -247,7 +248,14 @@ ta cần restart lại dịch vụ openvswitch:
 systemctl restart openvswitch
 ```
 
+## 7.4.Chú ý 4
+\- Thực hiện cài OpenStack bằng scripts trên lần lượt từng Compute, cài đặt xong trên `Compute1` rồi tiếp tục đến `Compute2`.  Vì khi thực đến lệnh:  
+```
+echocolor "Update"
+source com-update.sh
+```
 
+trong file `OPS-setup/COM/com-all.sh`. Lệnh này có chứa tiến trình copy thư mục `OPS-setup` sang tất cả các node, mà nếu một node nào đó cũng đang sử dụng thư `OPS-setup` thì sẽ gây ra hiện tượng **xung đột**.  
 
 
 

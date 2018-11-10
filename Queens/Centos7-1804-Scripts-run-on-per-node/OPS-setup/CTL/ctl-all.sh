@@ -4,8 +4,8 @@
 source ../function.sh
 source ../config.sh
 
-echocolor "IP address"
-source ctl-0-ipaddr.sh
+#echocolor "IP address"
+#source ctl-0-ipaddr.sh
 
 echocolor "Environment"
 source ctl-1-environment.sh

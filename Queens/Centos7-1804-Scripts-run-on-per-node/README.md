@@ -10,6 +10,7 @@
   - [5.1.Chú ý 1](#51chú-ý-1)
   - [5.2.Chú ý 2](#52chú-ý-2)
   - [5.3.Chú ý 3](#53chú-ý-3)
+  - [5.4.Chú ý 4](#54chú-ý-4)
 
 
 # 1.Mô hình
@@ -29,10 +30,7 @@ Yêu cầu phần cứng và địa chỉ IP cho các nodes.
 
 # 4.Thực hiện chạy scripts trên từng node Controller và Compute
 \- Trên tất các node:
-- Thực hiện cấu hình cho interface `eth0` như trong mô hình, các interface khác không cần cấu hình.  
-- Thực hiện đặt mật khẩu người dùng `root` trên tất cả các node sao cho giống nhau, ở đây mình đặt là `welcome123`.
-
-\- Đứng từ một máy ở cùng dải mạng với interface `eth0` của các node, thực hiện ssh vào các node:  
+- Thực hiện đặt mật khẩu người dùng `root` trên tất cả các node sao cho giống nhau, ở đây mình đặt là `welcome123`.  
 - Download các file shell scripts. Thực hiện các câu lệnh sau:  
 ```
 yum install subversion -y
@@ -44,7 +42,22 @@ svn export https://github.com/doxuanson/Install-OpenStack/trunk/Queens/Centos7-1
 chmod -R 755 OPS-setup
 ```
 
-- Thay đổi nội dung các file `OPS-setup/config.sh` theo mô hình của bạn.  
+- Thay đổi nội dung các file `OPS-setup/config.sh` theo mô hình của bạn.
+- Trên node Controller, thực hiện lệnh:  
+```
+cd OPS-setup/CTL
+source ctl-all.sh
+source ctl-0-ipaddr.sh
+```
+
+- Trên các node Compute, thực hiện lệnh:   
+```
+cd OPS-setup/COM
+source com-0-ipaddr.sh
+```
+
+
+\- Đứng từ một máy ở cùng dải mạng với interface `eth2` của các node, thực hiện ssh đến người dùng `root` của các node:  
 - Trên node Controller, thực hiện lệnh:  
 ```
 cd OPS-setup/CTL
@@ -121,6 +134,16 @@ ta cần restart lại dịch vụ openvswitch:
 ```
 systemctl restart openvswitch
 ```
+
+## 5.4.Chú ý 4
+\- Thực hiện cài OpenStack bằng scripts trên lần lượt từng Compute, cài đặt xong trên `Compute1` rồi tiếp tục đến `Compute2`.  Vì khi thực đến lệnh:  
+```
+echocolor "Update"
+source com-update.sh
+```
+
+trong file `OPS-setup/COM/com-all.sh`. Lệnh này có chứa tiến trình copy thư mục `OPS-setup` sang tất cả các node, mà nếu một node nào đó cũng đang sử dụng thư `OPS-setup` thì sẽ gây ra hiện tượng **xung đột**.  
+
 
 
 
