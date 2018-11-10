@@ -47,12 +47,14 @@ chmod -R 755 OPS-setup
 ```
 cd OPS-setup/CTL
 source ctl-0-ipaddr.sh
+init 6
 ```
 
 - Trên các node Compute, thực hiện lệnh:   
 ```
 cd OPS-setup/COM
 source com-0-ipaddr.sh
+init 6
 ```
 
 
