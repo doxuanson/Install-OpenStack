@@ -125,10 +125,20 @@ GRANT ALL PRIVILEGES ON nova_cell0.* TO 'nova'@'$CTL_MGNT_IP' \
 ```
 
 ## 5.3.Chú ý 3
-\- Sau khi thực hiện lệnh:  
+\- Trên node Controller, sau khi thực hiện lệnh:  
 ```
 yum install openstack-neutron openstack-neutron-ml2 \
 openstack-neutron-openvswitch ebtables -y
+```
+
+ta cần restart lại dịch vụ openvswitch:  
+```
+systemctl restart openvswitch
+```
+
+\- Trên node Compute, sau khi thực hiện lệnh:  
+```
+yum install openstack-neutron-openvswitch ebtables ipset -y
 ```
 
 ta cần restart lại dịch vụ openvswitch:  
