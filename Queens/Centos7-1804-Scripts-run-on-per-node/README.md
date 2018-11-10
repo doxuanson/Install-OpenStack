@@ -33,6 +33,12 @@ Yêu cầu phần cứng và địa chỉ IP cho các nodes.
 - Thực hiện đặt mật khẩu người dùng `root` trên tất cả các node sao cho giống nhau, ở đây mình đặt là `welcome123`.
 
 \- Đứng từ một máy ở cùng dải mạng với interface `eth0` của các node, thực hiện ssh vào các node:  
+- Download các file shell scripts. Thực hiện các câu lệnh sau:  
+```
+yum install subversion -y
+svn export https://github.com/doxuanson/Install-OpenStack/trunk/Queens/Centos7-1804-Scripts-run-on-per-node/OPS-setup
+```
+
 - Set quyền `755` cho các files đó.  
 ```
 chmod -R 755 OPS-setup
