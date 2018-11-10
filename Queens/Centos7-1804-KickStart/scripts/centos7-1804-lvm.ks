@@ -42,7 +42,7 @@ selinux --disabled
 #network --bootproto=dhcp --device=eth0 --onboot=on
 
 # config repo source.list
-url --url http://172.16.69.21/cblr/links/Centos7-x86_64
+url --url http://172.16.69.11/cblr/links/Centos7-x86_64
 
 # Do not configure the X Window System
 skipx

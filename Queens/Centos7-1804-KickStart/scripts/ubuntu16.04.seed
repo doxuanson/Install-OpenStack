@@ -14,7 +14,7 @@ d-i debian-installer/locale string en_US
 
 ### Mirror settings
 d-i mirror/country string manual
-d-i mirror/http/hostname string 172.16.69.21
+d-i mirror/http/hostname string 172.16.69.11
 d-i mirror/http/directory string /cblr/links/Ubuntu1604-x86_64
 d-i mirror/http/proxy string
 
@@ -80,7 +80,7 @@ d-i preseed/late_command string \
 # Config ssh
 sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/g' /target/etc/ssh/sshd_config; \
 #Config repo
-sed -i 's|172.16.69.21/cblr/links/Ubuntu1604-x86_64|vn.archive.ubuntu.com/ubuntu|g' /target/etc/apt/sources.list; \
+sed -i 's|172.16.69.11/cblr/links/Ubuntu1604-x86_64|vn.archive.ubuntu.com/ubuntu|g' /target/etc/apt/sources.list; \
 apt-get update -y && apt-get upgrade -y; \
 cd /target/root; \
 mkdir test

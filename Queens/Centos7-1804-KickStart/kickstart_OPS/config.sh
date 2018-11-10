@@ -14,7 +14,7 @@ REPO_FOLDER=/cblr/links/Centos7-x86_64
 CACHER_SERVER=172.16.69.21
 
 ## PATH scripts to install OpenStack
-PATH_OPSsetup="http://172.16.69.21/OPS-setup"
+PATH_OPSsetup="http://172.16.69.11/OPS-setup"
 
 ## Folder name OPS
 FOLDER_ROOT_NAME=OPS-setup

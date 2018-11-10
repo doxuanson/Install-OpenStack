@@ -7,7 +7,7 @@ echo "Install and config Cobbler on Centos7"
 echo "Setup environment variable"
 
 IF_NAME=eth0   # interface name of Cobbler server
-IP_COBBLER=172.16.69.21   #ip address of Cobbler server
+IP_COBBLER=172.16.69.11   #ip address of Cobbler server
 SUBNET=172.16.69.0
 SUBNET_MASK=255.255.255.0
 IP_DHCP_START=172.16.69.100

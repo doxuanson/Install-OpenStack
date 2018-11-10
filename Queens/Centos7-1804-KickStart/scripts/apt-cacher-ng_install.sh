@@ -6,7 +6,7 @@ echo "###Install and config APT-CACHER-NG on Ubuntu 16.04###"
 # Environment variable
 echo "###Setup environment variable###"
 
-IP_APT_CACHER_NG=10.10.10.152
+IP_APT_CACHER_NG=172.16.69.21
 PORT=3142
 
 # Install and config APT-CACHER-NG
