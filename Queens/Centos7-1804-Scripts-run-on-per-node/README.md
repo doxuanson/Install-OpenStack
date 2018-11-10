@@ -46,7 +46,6 @@ chmod -R 755 OPS-setup
 - Trên node Controller, thực hiện lệnh:  
 ```
 cd OPS-setup/CTL
-source ctl-all.sh
 source ctl-0-ipaddr.sh
 ```
 
