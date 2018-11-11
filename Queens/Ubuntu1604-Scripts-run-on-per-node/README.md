@@ -33,7 +33,7 @@ Yêu cầu phần cứng và địa chỉ IP cho các nodes.
 - Download các file shell scripts. Thực hiện các câu lệnh sau:  
 ```
 apt install subversion -y
-svn export https://github.com/doxuanson/Install-OpenStack/trunk/Queens/Centos7-1804-Scripts-run-on-per-node/OPS-setup
+svn export https://github.com/doxuanson/Install-OpenStack/trunk/Queens/Ubuntu1604-Scripts-run-on-per-node/OPS-setup
 ```
 
 - Set quyền `755` cho các files đó.  
