@@ -156,13 +156,13 @@ cd /var/www/html/preseed_OPS
   ```
 
 Các file sinh ra sẽ có tên lần lượt như sau:  
-`ks_CTL.ks`, `ks_COM1.ks`, `ks_COM2.ks`.  
+`ks_CTL.seed`, `ks_COM1.seed`, `ks_COM2.seed`.  
 
 \- Copy các file vừa sinh ra sang thư mục preseed của Cobbler:  
 ```
-cp /var/www/html/preseed_OPS/ps_CTL.ks /var/lib/cobbler/kickstarts
-cp /var/www/html/preseed_OPS/ps_COM1.ks /var/lib/cobbler/kickstarts
-cp /var/www/html/preseed_OPS/ps_COM2.ks /var/lib/cobbler/kickstarts
+cp /var/www/html/preseed_OPS/ps_CTL.seed /var/lib/cobbler/kickstarts
+cp /var/www/html/preseed_OPS/ps_COM1.seed /var/lib/cobbler/kickstarts
+cp /var/www/html/preseed_OPS/ps_COM2.seed /var/lib/cobbler/kickstarts
 ```
 
 ## 6.2.Tạo profiles cho Controller, Compute

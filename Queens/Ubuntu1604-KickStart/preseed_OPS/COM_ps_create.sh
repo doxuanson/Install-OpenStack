@@ -1,7 +1,7 @@
 #!/bin/bash
 source config.sh
 
-cat <<HERE > ps_COM$com_num.cfg
+cat <<HERE > ps_COM$com_num.seed
 #### Contents of the preconfiguration file (for xenial)
 
 ### Localization

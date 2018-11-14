@@ -1,7 +1,7 @@
 #!/bin/bash
 source config.sh
 
-cat <<HERE > ps_CTL.cfg
+cat <<HERE > ps_CTL.seed
 #### Contents of the preconfiguration file (for xenial)
 
 ### Localization
