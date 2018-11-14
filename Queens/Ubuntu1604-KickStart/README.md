@@ -124,45 +124,45 @@ svn export https://github.com/doxuanson/Install-OpenStack/trunk/Queens/Ubuntu160
 \- Thực hiện lệnh:  
 ```
 chmod -R 755 /var/www/html/OPS-setup
-chmod -R 755 /var/www/html/kickstart_OPS
+chmod -R 755 /var/www/html/preseed_OPS
 ```
 
 # 6.Hướng dẫn sử dụng
-\- Thay đổi nội dung các file `/var/www/html/OPS-setup/config.sh` và `/var/www/html/kickstart_OPS/config.sh` theo mô hình của bạn.  
+\- Thay đổi nội dung các file `/var/www/html/OPS-setup/config.sh` và `/var/www/html/preseed_OPS/config.sh` theo mô hình của bạn.  
 
 >Chú ý: Mật khẩu cho node phải đồng nhất trong 2 file cấu hình.
 
 \- Trong bài lab này, mình cài đặt mô hình OpenStack gồm 1 node Controller, nhiều node Compute.  
 
-## 6.1.Tạo file kickstart cho các node OpenStack
-\- Dùng các file trong thư mục `/var/www/html/kickstart_OPS` để sinh các file kickstart cho các node OpenStack.  
+## 6.1.Tạo file preseed cho các node OpenStack
+\- Dùng các file trong thư mục `/var/www/html/preseed_OPS` để sinh các file preseed cho các node OpenStack.  
 ```
-cd /var/www/html/kickstart_OPS
+cd /var/www/html/preseed_OPS
 ```
 
-  - Sinh file kickstart cho node Controller:  
+  - Sinh file preseed cho node Controller:  
   ```
-  source CTL_ks_create.sh
-  ```
-
-  - Sinh file kickstart cho node Compute1, đầu tiên cho thiết lập biến `com_num` bằng `1` (`com_num=1`) trong file config.sh, sau đó:
-  ```
-  source COM_ks_create.sh
+  source CTL_ps_create.sh
   ```
 
-  - Tương tự sinh file kickstart cho node Compute2, thiết lập biến `com_num` bằng `2` (`com_num=2`) trong file config.sh, sau đó:  
+  - Sinh file preseed cho node Compute1, đầu tiên cho thiết lập biến `com_num` bằng `1` (`com_num=1`) trong file config.sh, sau đó:
   ```
-  source COM_ks_create.sh
+  source COM_ps_create.sh
+  ```
+
+  - Tương tự sinh file preseed cho node Compute2, thiết lập biến `com_num` bằng `2` (`com_num=2`) trong file config.sh, sau đó:  
+  ```
+  source COM_ps_create.sh
   ```
 
 Các file sinh ra sẽ có tên lần lượt như sau:  
 `ks_CTL.ks`, `ks_COM1.ks`, `ks_COM2.ks`.  
 
-\- Copy các file vừa sinh ra sang thư mục kickstart của Cobbler:  
+\- Copy các file vừa sinh ra sang thư mục preseed của Cobbler:  
 ```
-cp /var/www/html/kickstart_OPS/ks_CTL.ks /var/lib/cobbler/kickstarts
-cp /var/www/html/kickstart_OPS/ks_COM1.ks /var/lib/cobbler/kickstarts
-cp /var/www/html/kickstart_OPS/ks_COM2.ks /var/lib/cobbler/kickstarts
+cp /var/www/html/preseed_OPS/ps_CTL.ks /var/lib/cobbler/kickstarts
+cp /var/www/html/preseed_OPS/ps_COM1.ks /var/lib/cobbler/kickstarts
+cp /var/www/html/preseed_OPS/ps_COM2.ks /var/lib/cobbler/kickstarts
 ```
 
 ## 6.2.Tạo profiles cho Controller, Compute
