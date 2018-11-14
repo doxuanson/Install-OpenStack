@@ -50,7 +50,7 @@ source ctl-0-ipaddr.sh
 init 6
 ```
 
-- Trên các node Compute, thực hiện lệnh:   
+- Trên các node Compute, sửa file `OPS-setup/COM/com_num.sh` tương ứng với số thú tự node Compute, thực hiện lệnh:   
 ```
 cd OPS-setup/COM
 source com-0-ipaddr.sh
