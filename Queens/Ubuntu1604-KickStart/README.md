@@ -112,7 +112,7 @@ source apt-cacher-ng_install.sh
 ```
 apt install subversion -y
 svn export https://github.com/doxuanson/Install-OpenStack/trunk/Queens/Ubuntu1604-KickStart/OPS-setup
-svn export https://github.com/doxuanson/Install-OpenStack/trunk/Queens/Ubuntu1604-KickStart/kickstart_OPS
+svn export https://github.com/doxuanson/Install-OpenStack/trunk/Queens/Ubuntu1604-KickStart/preseed_OPS
 ```
 
 \- Copy 2 thư mục vừa tải về vào thư mục `/var/www/html` :  
