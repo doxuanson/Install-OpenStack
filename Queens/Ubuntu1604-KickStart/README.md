@@ -18,8 +18,6 @@
 - [7.Chú ý khi cài OpenStack phiên bản Queens sử dụng OpenvSwitch trên Ubuntu 16.04 sử dụng Cobbler](#7chú-ý-khi-cài-openstack-phiên-bản-queens-sử-dụng-openvswitch-trên-centos-751804-sử-dụng-cobbler)
   - [7.1.Chú ý 1](#71chú-ý-1)
   - [7.2.Chú ý 2](#72chú-ý-2)
-  - [7.3.Chú ý 3](#73chú-ý-3)
-  - [7.4.Chú ý 4](#74chú-ý-4)
 
 
 
@@ -112,9 +110,9 @@ source apt-cacher-ng_install.sh
 # 5.Cấu hình cài đặt tự động cho OpenStack
 \- Download các file shell scripts. Thực hiện các câu lệnh sau:  
 ```
-yum install subversion -y
-svn export https://github.com/doxuanson/Install-OpenStack/trunk/Queens/Centos7-1804-KickStart/OPS-setup
-svn export https://github.com/doxuanson/Install-OpenStack/trunk/Queens/Centos7-1804-KickStart/kickstart_OPS
+apt install subversion -y
+svn export https://github.com/doxuanson/Install-OpenStack/trunk/Queens/Ubuntu1604-KickStart/OPS-setup
+svn export https://github.com/doxuanson/Install-OpenStack/trunk/Queens/Ubuntu1604-KickStart/kickstart_OPS
 ```
 
 \- Copy 2 thư mục vừa tải về vào thư mục `/var/www/html` :  
@@ -191,74 +189,29 @@ cp /var/www/html/kickstart_OPS/ks_COM2.ks /var/lib/cobbler/kickstarts
 nhưng có 1 số chỗ bổ sung.  
 
 ## 7.1.Chú ý 1
-\- Stop và disable `firewalld`, `selinux`.  
-
-## 7.2.Chú ý 2
-\- Trên node Controller, tại tất cả các project như Keystone, Glance, Nova, Neutron;  khi tạo database ta cần thêm người dùng:  
-```
-'<project_name'@'$CTL_MGNT_IP'
-```
-
-\- VD đối với Keystone và Nova:  
-```
-CREATE DATABASE keystone;
-GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'localhost' \
-IDENTIFIED BY '$KEYSTONE_DBPASS';
-GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'%' \
-IDENTIFIED BY '$KEYSTONE_DBPASS';
-GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'$CTL_MGNT_IP' \
-IDENTIFIED BY '$KEYSTONE_DBPASS';
-```
-
-```
-CREATE DATABASE nova_api;
-CREATE DATABASE nova;
-CREATE DATABASE nova_cell0;
-GRANT ALL PRIVILEGES ON nova_api.* TO 'nova'@'localhost' \
-  IDENTIFIED BY '$NOVA_DBPASS';
-GRANT ALL PRIVILEGES ON nova_api.* TO 'nova'@'%' \
-  IDENTIFIED BY '$NOVA_DBPASS';
-GRANT ALL PRIVILEGES ON nova_api.* TO 'nova'@'$CTL_MGNT_IP' \
-  IDENTIFIED BY '$NOVA_DBPASS';
-
-GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'localhost' \
-  IDENTIFIED BY '$NOVA_DBPASS';
-GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'%' \
-  IDENTIFIED BY '$NOVA_DBPASS';
-GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'$CTL_MGNT_IP' \
-  IDENTIFIED BY '$NOVA_DBPASS';
-
-GRANT ALL PRIVILEGES ON nova_cell0.* TO 'nova'@'localhost' \
-  IDENTIFIED BY '$NOVA_DBPASS';
-GRANT ALL PRIVILEGES ON nova_cell0.* TO 'nova'@'%' \
-  IDENTIFIED BY '$NOVA_DBPASS';
-GRANT ALL PRIVILEGES ON nova_cell0.* TO 'nova'@'$CTL_MGNT_IP' \
-  IDENTIFIED BY '$NOVA_DBPASS';
-```
-
-## 7.3.Chú ý 3
 \- Trên node Controller, sau khi thực hiện lệnh:  
 ```
-yum install openstack-neutron openstack-neutron-ml2 \
-openstack-neutron-openvswitch ebtables -y
+apt install neutron-server neutron-plugin-ml2 \
+	neutron-openvswitch-agent neutron-l3-agent neutron-dhcp-agent \
+	neutron-metadata-agent -y
 ```
 
 ta cần restart lại dịch vụ openvswitch:  
 ```
-systemctl restart openvswitch
+systemctl restart openvswitch-switch
 ```
 
 \- Trên node Compute, sau khi thực hiện lệnh:  
 ```
-yum install openstack-neutron-openvswitch ebtables ipset -y
+apt install neutron-openvswitch-agent -y
 ```
 
 ta cần restart lại dịch vụ openvswitch:  
 ```
-systemctl restart openvswitch
+systemctl restart openvswitch-switch
 ```
 
-## 7.4.Chú ý 4
+## 7.2.Chú ý 2
 \- Thực hiện cài OpenStack bằng scripts trên lần lượt từng Compute, cài đặt xong trên `Compute1` rồi tiếp tục đến `Compute2`.  Vì khi thực đến lệnh:  
 ```
 echocolor "Update"
@@ -266,7 +219,6 @@ source com-update.sh
 ```
 
 trong file `OPS-setup/COM/com-all.sh`. Lệnh này có chứa tiến trình copy thư mục `OPS-setup` sang tất cả các node, mà nếu một node nào đó cũng đang sử dụng thư `OPS-setup` thì sẽ gây ra hiện tượng **xung đột**.  
-
 
 
 
