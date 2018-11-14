@@ -6,7 +6,7 @@ cat <<HERE > ps_COM$com_num.seed
 
 ### Localization
 # Preseeding only locale sets language, country and locale.
-#d-i debian-installer/locale string en_US
+d-i debian-installer/locale string en_US
 
 # Keyboard selection
 #d-i console-setup/ask_detect boolean false
