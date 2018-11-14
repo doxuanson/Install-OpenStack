@@ -85,7 +85,7 @@ d-i preseed/late_command string \\
 sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/g' /target/etc/ssh/sshd_config; \\
 #Config repo
 sed -i "s|$REPO_HOSTNAME$REPO_FOLDER|http://vn.archive.ubuntu.com/ubuntu|g" /target/etc/apt/sources.list; \\
-apt-get update -y && apt-get upgrade –y; \\
+apt-get update -y && apt-get upgrade -y; \\
 
 echo -e "Acquire::http::Proxy \"http://$CACHER_SERVER:3142\";" > /target/etc/apt/apt.conf.d/00aptproxy; \\
 cp /target/etc/rc.local /target/etc/rc.local.bak; \\
