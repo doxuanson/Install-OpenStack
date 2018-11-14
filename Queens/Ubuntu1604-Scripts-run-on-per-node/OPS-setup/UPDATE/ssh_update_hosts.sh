@@ -5,6 +5,8 @@ source ../function.sh
 source ../config.sh
 source ../folder-name_config.sh
 
+node_hostname=$(hostname)
+
 # Controller
 
 mkdir /root/.ssh
@@ -67,7 +69,7 @@ do
 	else
 		echocolor "Node ${HOST_BLK[$i]} known"
 	fi
-	sshpass -p ${COM_PASS[$i]} ssh root@${COM_EXT_IP[$i]} "rm -rf /root/$FOLDER_ROOT_NAME"
+	sshpass -p ${BLK_PASS[$i]} ssh root@${BLK_EXT_IP[$i]} "rm -rf /root/$FOLDER_ROOT_NAME"
 	sshpass -p ${BLK_PASS[$i]} scp -r ../../$FOLDER_ROOT_NAME root@${BLK_EXT_IP[$i]}:
 	sshpass -p ${BLK_PASS[$i]} ssh -t -t root@${BLK_EXT_IP[$i]} "cd $FOLDER_ROOT_NAME/$UPDATE_FOLDER_NAME && source update_hosts.sh"
 	
