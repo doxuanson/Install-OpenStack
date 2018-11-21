@@ -12,10 +12,10 @@
 - [4.Cài đặt APT-CACHER-NG](#4cài-đặt-apt-cacher-ng)
 - [5.Cấu hình cài đặt tự động cho OpenStack](#5cấu-hình-cài-đặt-tự-động-cho-openstack)
 - [6.Hướng dẫn sử dụng](#6hướng-dẫn-sử-dụng)
-  - [6.1.Tạo file kickstart cho các node OpenStack](#61tạo-file-kickstart-cho-các-node-openstack)
+  - [6.1.Tạo file preseed cho các node OpenStack](#61tạo-file-preseed-cho-các-node-openstack)
   - [6.2.Tạo profiles cho Controller, Compute](#62tạo-profiles-cho-controller-compute)
 - [6.Demo](#6demo)
-- [7.Chú ý khi cài OpenStack phiên bản Queens sử dụng OpenvSwitch trên Ubuntu 16.04 sử dụng Cobbler](#7chú-ý-khi-cài-openstack-phiên-bản-queens-sử-dụng-openvswitch-trên-centos-751804-sử-dụng-cobbler)
+- [7.Chú ý khi cài OpenStack phiên bản Queens sử dụng OpenvSwitch trên Ubuntu 16.04 sử dụng Cobbler](#7chú-ý-khi-cài-openstack-phiên-bản-queens-sử-dụng-openvswitch-trên-ubuntu-1604-sử-dụng-cobbler)
   - [7.1.Chú ý 1](#71chú-ý-1)
   - [7.2.Chú ý 2](#72chú-ý-2)
 
