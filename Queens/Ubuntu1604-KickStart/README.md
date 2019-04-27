@@ -22,7 +22,7 @@
 
 
 # 1.Mô hình
-\- Node `Cobbler` chạy hệ điều hành Ubuntu 16.04.  
+\- Node `Cobbler` chạy hệ điều hành Centos 7.5.18.04.  
 \- Node `APT-CACHER-NG` chạy hệ điều hành Ubuntu Server 16.04.  
 \- Mô hình cài đặt OpenStack Queens gồm 1 node Controller, nhiều node Compute.  
 \- Cài đặt các project: Keystone, Glance, Nova, Neutron, Horizon.   
